@@ -1,0 +1,26 @@
+<!-- lobby.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Starte Streetride</title>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get("code");
+    if (code) {
+      // Versuch, App zu öffnen (Deep Link)
+      window.location.href = "streetride://lobby?code=" + code;
+
+      // Fallback: Hinweis anzeigen
+      setTimeout(() => {
+        document.getElementById("fallback").style.display = "block";
+      }, 2000);
+    }
+  </script>
+</head>
+<body>
+  <h1>Starte Streetride</h1>
+  <p id="fallback" style="display:none;">
+    Falls nichts passiert, öffne die App manuell und gib den Lobby-Code ein.
+  </p>
+</body>
+</html>
